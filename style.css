@@ -9,14 +9,22 @@ h1{
 }
 
 img{
-    width: 200px;
+
+    height:auto;
+    width: 100px;
+
+    /* width: 200px;
     height: 200px;
-    border-radius: 100px;
+    border-radius: 100px; */
 
 }
 
 video{
-    width: 400px;
+
+    height: auto;
+    width: 100px;
+
+    /* width: 400px;  */
     /* background-color: black;
     padding: 50px; */
 }
@@ -34,12 +42,12 @@ video{
 #p2{
     font-style: italic;
 }
-nav{
+/* nav{
     display: flex;
     /* flex-direction: column; */
     flex-direction: row;
     gap: 20px;
-}
+}*/
 
 ol{
     list-style-type: lower-roman;
@@ -86,11 +94,12 @@ form{
     border-radius: 100px;
 }
 
-.grid{
+/*for mobile 6 box 2 row and column*/
+/* .grid{
     display: grid;
     width: 100px;
     grid-template-columns: 33% 33%;
-}
+} */
 
 #one{
     /* grid-row: 1/2; */
@@ -132,4 +141,43 @@ form{
 .festival{
     display: grid;
     grid-template-columns: 50% 50%;
+}
+
+@media(min-width: 1024px){ 
+    img{
+        height:500px;
+        width:500px;
+        background-color: black;
+        padding: 100px;
+    }
+}
+
+/* @media(max-width: 600px){
+    img{
+        height:auto;
+        width:100px;
+    }
+} */
+
+.grid{
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+/*desktop*/
+@media(max-width: 1024px){
+    nav{
+        display: flex;
+        flex-direction:row;
+        gap: 20px;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: 33% 33%;
+    }
+}
+
+nav{
+    display: flex;
+    flex-direction:column;
 }
