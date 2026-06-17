@@ -9,6 +9,9 @@ body {
     background: linear-gradient(135deg, #deb887, #f5deb3);
 
     
+
+
+    
     border: 10px solid transparent;
 
     
@@ -99,28 +102,19 @@ button {
 }
 
 
-input:focus {
-    border: 2px solid purple;
-    outline: none;
-}
 
 
 
 
 
-/* form{
+
+form{
     height: 500px;;
     width: 50px;
-    background-color: lightgray;
+    text-align: center;
     padding: 50px;
     border-radius: 100px;
 }
-
-
-
-
-
-
 
 
 

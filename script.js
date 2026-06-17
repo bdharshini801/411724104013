@@ -1,6 +1,6 @@
-function changeColor() {
-    document.body.style.backgroundColor = "pink";
-}
+// function changeColor() {
+//     document.body.style.backgroundColor = "pink";
+// }
 
 
 
@@ -53,8 +53,6 @@ function topFunction() {
 
 
 
-
-
 // Task 6
 
 function validateForm() {
@@ -81,4 +79,31 @@ function validateForm() {
     error.innerHTML = "Form submitted successfully!";
     error.style.color = "green";
     return false; 
+}
+
+
+
+
+
+let index = 0;
+
+const colors = [
+    "lightblue",
+    "lightgreen",
+    "lightyellow",
+    "pink",
+    "lavender",
+    "lightgray"
+];
+
+function changeColor() {
+
+    document.body.style.backgroundColor = colors[index];
+
+    index++;
+
+    if (index === colors.length) {
+        index = 0;
+    }
+
 }
