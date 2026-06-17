@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Interactive Website</title>
+
+    <link rel ="stylesheet" href="styles.css"
+
+
+</head>
+
+<body>
+
+    <h1 style="color: black; text-align: center;">Welcome to My Website</h1>
+
+    <p style="font-size: 18px; color: green;">
+        This is a simple interactive and responsive website project.
+    </p>
+
+
+    <div style="text-align: center";>
+        <img src="shutterstock_669619393-Optimized.jpg" alt="Sample Image">
+    </div>
+
+    <br><br>
+
+    <button onclick="changeColor()">Click Me!</button>
+    
+
+    <h2> API </h2>
+    <div style="text-align: center;">
+        <button onclick="loadUsers()">Load Users</button>
+    </div>
+
+    <ul id="userList" style="text-align: center; list-style-position: inside;"></ul>
+    <script src="script.js"></script>
+
+
+    
+    
+    
+
+  <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Enter Name"><br><br>
+        <input type="email" id="email" placeholder="Enter Email"><br><br>
+        <input type="password" id="password" placeholder="Enter Password"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="error" style="color:red;"></p>
+
+    <script src="script.js"></script>
+
+    <button onclick="topFunction()" id="topBtn">⬆</button>
+
+</body>
+</html>
