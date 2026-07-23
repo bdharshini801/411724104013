@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Message Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        input {
+            padding: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 8px 12px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        #messages {
+            margin-top: 20px;
+        }
+
+        .message {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Message Manager</h1>
+
+    <input type="text" id="messageInput" placeholder="Enter message">
+    <button id="addBtn">Add Message</button>
+    <button id="clearBtn">Clear All Messages</button>
+
+    <p>Character Count: <span id="charCount">0</span></p>
+
+    <div id="messages"></div>
+
+    <p id="status"></p>
+
+    <script>
+        let messages = [];
+
+        const input = document.getElementById("messageInput");
+        const addBtn = document.getElementById("addBtn");
+        const clearBtn = document.getElementById("clearBtn");
+        const charCount = document.getElementById("charCount");
+        const messagesDiv = document.getElementById("messages");
+        const status = document.getElementById("status");
+
+        // Character count using input event
+        input.addEventListener("input", () => {
+            charCount.textContent = input.value.length;
+        });
+
+        // Display all messages
+        function displayMessages() {
+            messagesDiv.innerHTML = "";
+
+            messages.forEach((msgObj, index) => {
+                const msgElement = document.createElement("div");
+                msgElement.className = "message";
+                msgElement.textContent = msgObj.text;
+
+                messagesDiv.appendChild(msgElement);
+            });
+        }
+
+        // Add Message button
+        addBtn.addEventListener("click", () => {
+            const message = input.value.trim();
+
+            const messagePromise = new Promise((resolve, reject) => {
+                if (message.length >= 3) {
+                    resolve(message);
+                } else {
+                    reject("Message must contain at least 3 characters");
+                }
+            });
+
+            messagePromise
+                .then((msg) => {
+                    status.textContent = "Message Added Successfully";
+
+                    const msgObj = {
+                        text: msg
+                    };
+
+                    messages.push(msgObj);
+                    displayMessages();
+
+                    // Remove after 10 seconds
+                    setTimeout(() => {
+                        const position = messages.indexOf(msgObj);
+
+                        if (position !== -1) {
+                            messages.splice(position, 1);
+                            displayMessages();
+                            status.textContent = "Message Expired";
+                        }
+                    }, 10000);
+
+                    input.value = "";
+                    charCount.textContent = 0;
+                })
+                .catch((error) => {
+                    status.textContent = error;
+                });
+        });
+
+        // Clear All Messages button
+        clearBtn.addEventListener("click", () => {
+            messages = [];
+            messagesDiv.innerHTML = "";
+            status.textContent = "All Messages Cleared";
+        });
+    </script>
+
+</body>
+</html>
